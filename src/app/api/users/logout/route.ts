@@ -1,0 +1,30 @@
+import { connectDB } from "@/dbConfig/dbConfig";
+import { NextRequest, NextResponse } from "next/server";
+
+connectDB();
+export async function POST(request: NextRequest) {
+  try {
+    const response = NextResponse.json(
+      {
+        flag: "success",
+        message: "User successfully logout",
+      },
+      {
+        status: 200,
+      },
+    );
+    response.cookies.delete("token");
+    return response;
+  } catch (error: unknown) {
+    return NextResponse.json(
+      {
+        flag: false,
+        message: "Some errors, User Cannot login",
+        error: error.message,
+      },
+      {
+        status: 500,
+      },
+    );
+  }
+}
