@@ -35,10 +35,12 @@ export async function POST(request: NextRequest) {
         status: 400,
       },
     );
-  } catch (error: any) {
+  } catch (error) {
+    const message = error instanceof Error ? error.message : String(error);
+
     return NextResponse.json(
       {
-        error: error.message,
+        error: message,
       },
       { status: 500 },
     );

@@ -40,7 +40,7 @@ export async function POST(request: NextRequest) {
       status: 202,
       flag: "success",
     });
-    const returnShowCase = await NextResponse.json({
+    const returnShowCase = NextResponse.json({
       flag: "success",
       status: 201,
       message: "User Successfully created",
@@ -49,10 +49,12 @@ export async function POST(request: NextRequest) {
       eamil: savedUser.email,
     });
     return returnShowCase;
-  } catch (error: any) {
+  } catch (error) {
+    const message = error instanceof Error ? error.message : String(error);
+
     return NextResponse.json({
       status: 401,
-      message: `Something went wrong in creating user ${error.message}`,
+      message: `Something went wrong in creating user ${message}`,
     });
   }
 }

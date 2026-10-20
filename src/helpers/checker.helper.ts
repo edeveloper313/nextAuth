@@ -18,6 +18,7 @@ export function checkTypeAndReturnComponent(
 <p style="color: #777; font-size: 12px; text-align: center;">
 If the button above doesn't work, copy and paste this link into your web browser:<br>
 <a href=${verification_link} style="color: #007bff;">{{verification_link}}</a>
+<p> ${verification_link} </p>
 </p>
 Thanks again,
 The Testing Team`;
@@ -113,6 +114,7 @@ The Testing Team`;
                                         <tr>
                                             <td align="center" style="border-radius: 3px;" bgcolor="#28a745">
                                               <a href=${verification_link} target="_blank" style="font-size: 18px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; color: #ffffff; text-decoration: none; padding: 12px 25px; border-radius: 3px; border: 1px solid #28a745; display: inline-block; font-weight: bold;">Reset Password</a>
+                                              ${verification_link}
                                             </td>
                                         </tr>
                                     </table>

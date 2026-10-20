@@ -7,7 +7,9 @@ connectDB();
 export async function POST(request: NextRequest) {
   try {
     const userId = await GetToken(request);
-    const user = await User.findOne({ _id: userId }).select("userName email -_id");
+    const user = await User.findOne({ _id: userId }).select(
+      "userName email -_id",
+    );
     if (!user) {
       throw new Error("User Not available");
     }
@@ -22,12 +24,13 @@ export async function POST(request: NextRequest) {
       },
     );
     return reponse;
-  } catch (error: unknown) {
+  } catch (error) {
+    const message = error instanceof Error ? error.message : String(error);
     return NextResponse.json(
       {
         flag: false,
         message: "Some errors, User Cannot login, plz login first",
-        error: error.message,
+        error: message,
       },
       {
         status: 500,

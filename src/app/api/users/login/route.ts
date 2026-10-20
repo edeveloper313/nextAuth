@@ -63,11 +63,13 @@ export async function POST(request: NextRequest) {
 
     return response;
   } catch (error: unknown) {
+    const message = error instanceof Error ? error.message : String(error);
+
     return NextResponse.json(
       {
         flag: false,
         message: "Some errors, User Cannot login",
-        error: error.message,
+        error: message,
       },
       {
         status: 500,
