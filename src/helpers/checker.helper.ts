@@ -17,7 +17,7 @@ export function checkTypeAndReturnComponent(
 </div>
 <p style="color: #777; font-size: 12px; text-align: center;">
 If the button above doesn't work, copy and paste this link into your web browser:<br>
-<a href=${verification_link} style="color: #007bff;">{{verification_link}}</a>
+<a href=${verification_link} style="color: #007bff;">${verification_link}</a>
 <p> ${verification_link} </p>
 </p>
 Thanks again,
@@ -132,7 +132,7 @@ The Testing Team`;
                 <!-- COPY -->
                 <tr>
                     <td bgcolor="#ffffff" align="left" style="padding: 0px 30px 40px 30px; border-radius: 0px 0px 4px 4px; color: #666666; font-family: 'Helvetica', Helvetica, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px;">
-                        <p style="margin: 0;">Cheers,<br>The [Company Name] Team</p>
+                        <p style="margin: 0;">Cheers,<br>The Test Team</p>
                     </td>
                 </tr>
             </table>

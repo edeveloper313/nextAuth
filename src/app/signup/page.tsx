@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import UserSignUpI from "@/interfaces/ui/user.interface";
 import axios from "axios";
 import toast from "react-hot-toast";
-import { useRouter } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 import Link from "next/link";
 const SignUp = () => {
   const router = useRouter();
@@ -20,8 +20,10 @@ const SignUp = () => {
   const onSignUp = async () => {
     try {
       const response = await axios.post("api/users/signup", user);
-      console.log(`SignUp Successfully ${response.data}`);
-      router.push("/login");
+      if (response.data.flag) {
+        router.push("/login");
+      }
+      return console.log("No SignUp");
     } catch (error: unknown) {
       const message = error instanceof Error ? error.message : String(error);
 

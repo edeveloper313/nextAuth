@@ -7,6 +7,7 @@ import {
 } from "@/helpers/checker.helper";
 import User from "@/models/user.model";
 import bcrypt from "bcryptjs";
+import { NextResponse } from "next/server";
 
 export const sendMail = async ({ email, type, userId }: sendMailI) => {
   try {
@@ -32,7 +33,7 @@ export const sendMail = async ({ email, type, userId }: sendMailI) => {
         pass: process.env.MAILER_USER_PASS,
       },
     });
-    const verificationLink = `{process.env.DOMAIN}/verifyemail?token=${hashedToken}`;
+    const verificationLink = `${process.env.DOMAIN}/verifyemail?token=${hashedToken}`;
 
     const mailOptions = {
       from: "shakirbarkati@gmail.com", // sender address
@@ -46,9 +47,12 @@ export const sendMail = async ({ email, type, userId }: sendMailI) => {
       }
       console.log("Message sent: %s", info.messageId);
     });
-  } catch (error: any) {
-    throw new Error(
-      `Email Sending err, Plz check email sender file ${error.message}`,
-    );
+  } catch (error) {
+    const message = error instanceof Error ? error.message : String(error);
+
+    return NextResponse.json({
+      status: 401,
+      message: `Something went wrong in mailer ${message}`,
+    });
   }
 };

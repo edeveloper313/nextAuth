@@ -14,6 +14,7 @@ export async function POST(request: NextRequest) {
     const user = await User.findOne({ email });
     if (user) {
       return NextResponse.json({
+        flag: true,
         status: 422,
         message: "User Already exist",
       });
@@ -52,9 +53,13 @@ export async function POST(request: NextRequest) {
   } catch (error) {
     const message = error instanceof Error ? error.message : String(error);
 
-    return NextResponse.json({
-      status: 401,
-      message: `Something went wrong in creating user ${message}`,
-    });
+    return NextResponse.json(
+      {
+        message: `Something went wrong in creating user ${message}`,
+      },
+      {
+        status: 401,
+      },
+    );
   }
 }
