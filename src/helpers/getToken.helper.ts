@@ -1,4 +1,4 @@
-import { NextRequest } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import jwt from "jsonwebtoken";
 
 export const GetToken = async (request: NextRequest) => {
@@ -18,8 +18,13 @@ export const GetToken = async (request: NextRequest) => {
       throw new Error("Invalid token");
     }
     return decoded.id;
-  } catch (error: any) {
-    throw new Error(`token not available ${error}`);
+  } catch (error) {
+    const message = error instanceof Error ? error.message : String(error);
+
+    return NextResponse.json({
+      status: 401,
+      message: `Something went wrong in token ${message}`,
+    });
   }
 };
 
