@@ -2,11 +2,11 @@ import { connectDB } from "@/dbConfig/dbConfig";
 import { NextRequest, NextResponse } from "next/server";
 
 connectDB();
-export async function POST(request: NextRequest) {
+export async function GET(request: NextRequest) {
   try {
     const response = NextResponse.json(
       {
-        flag: "success",
+        flag: true,
         message: "User successfully logout",
       },
       {

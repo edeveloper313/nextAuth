@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import UserSignUpI from "@/interfaces/ui/user.interface";
+import { UserSignUpI } from "@/interfaces/ui/user.interface";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { redirect, useRouter } from "next/navigation";

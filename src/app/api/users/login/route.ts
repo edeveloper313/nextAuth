@@ -50,6 +50,7 @@ export async function POST(request: NextRequest) {
     const response = NextResponse.json(
       {
         success: true,
+        flag: true,
         message: "User Login successfully",
         user: user,
       },

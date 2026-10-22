@@ -7,16 +7,14 @@ connectDB();
 export async function POST(request: NextRequest) {
   try {
     const userId = await GetToken(request);
-    const user = await User.findOne({ _id: userId }).select(
-      "userName email -_id",
-    );
+    const user = await User.findOne({ _id: userId }).select("_id");
     if (!user) {
       throw new Error("User Not available");
     }
     const reponse = NextResponse.json(
       {
         flag: true,
-        message: "User Available",
+        message: "User found",
         user,
       },
       {
