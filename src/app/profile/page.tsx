@@ -34,13 +34,7 @@ const ProfilePage = () => {
           <div className="container mx-auto px-6 py-4 md:flex md:items-center md:justify-between">
             {/* Logo and Mobile Toggle */}
             <div className="flex items-center justify-between">
-              <a href="#" aria-label="Home">
-                <img
-                  className="h-6 w-auto sm:h-7"
-                  src="https://merakiui.com/images/full-logo.svg"
-                  alt="Logo"
-                />
-              </a>
+              <a href="#" aria-label="Home"></a>
 
               <div className="flex md:hidden">
                 <button
@@ -150,14 +144,6 @@ const ProfilePage = () => {
                   Shop Now
                 </button>
               </div>
-            </div>
-
-            <div className="mt-6 flex w-full items-center justify-center lg:mt-0 lg:w-1/2">
-              <img
-                className="h-full w-full lg:max-w-3xl"
-                src="https://merakiui.com/images/components/Catalogue-pana.svg"
-                alt="Clothing catalogue illustration"
-              />
             </div>
           </div>
         </div>
